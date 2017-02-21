@@ -4,7 +4,6 @@
 var images = ['images/bag.jpg', 'images/banana.jpg', 'images/bathroom.jpg', 'images/boots.jpg', 'images/breakfast.jpg', 'images/bubblegum.jpg', 'images/chair.jpg', 'images/cthulhu.jpg', 'images/dog-duck.jpg', 'images/dragon.jpg', 'images/pen.jpg', 'images/pet-sweep.jpg', 'images/scissors.jpg', 'images/shark.jpg', 'images/sweep.png', 'images/tauntaun.jpg', 'images/unicorn.jpg', 'images/usb.gif', 'images/water-can.jpg', 'images/wine-glass.jpg'];
 
 
-
 function Display (imageName, path) {
   this.displayed = 0;
   this.clicked = 0;
@@ -12,27 +11,29 @@ function Display (imageName, path) {
   this.name = imageName;
 }
 
+Display.prototype.totalClicksPerImage = function() {
+  for (var i = 0; i < 25; i++);
 
+};
+
+var randomImages = function() {
+  return Math.floor(Math.random() * (images.length));
+};
+
+var currentImages = function() {
+  return [images[randomImages()], images[randomImages()], images[randomImages()]];
+};
+
+var pageSwitch = function() {
+  document.getElementById('first').setAttribute('src', currentImages()[0]);
+  document.getElementById('second').setAttribute('src', currentImages()[1]);
+  document.getElementById('third').setAttribute('src', currentImages()[2]);
+};
 
 document.getElementById('first').addEventListener('click', pageSwitch);
 document.getElementById('second').addEventListener('click', pageSwitch);
 document.getElementById('third').addEventListener('click', pageSwitch);
 
-function pageSwitch(event) {
-  console.log('page switch');
-
-  var randomImages = function() {
-    return Math.floor(Math.random() * (images.length));
-  };
-
-  var currentImages = function() {
-    return [images[randomImages()], images[randomImages()], images[randomImages()]];
-  };
-
-  document.getElementById('first').setAttribute('src', currentImages()[0]);
-  document.getElementById('second').setAttribute('src', currentImages()[1]);
-  document.getElementById('third').setAttribute('src', currentImages()[2]);
-};
 
 var bag = new Display('bag', 'bag.jpg');
 var banana = new Display('banana', 'banana.jpg');
@@ -55,3 +56,4 @@ var usb = new Display('usb', 'usb.gif');
 var waterCan = new Display('waterCan', 'water-can.jpg');
 var wineGlass = new Display('wineGlass', 'wine-glass.jpg');
 
+pageSwitch();
