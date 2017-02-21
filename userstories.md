@@ -13,6 +13,7 @@
   - As a Developer I want to make my code more DRY by using arrays for collections of values and strings so that the code is easier to read and understand.
   - As a Developer I want to show a random selection of images and figure the percentage of time each image is clicked. 
   - As a Developer I want to find the number of times each image is selected.
+  - As a Developer I want to store results of clicks, then show user after user has clicked 25 times per client requirements.
 
 - Focus Group Participants
   - As a Focus Group Participant I want to see three images formatted nicely so that my eyes focus on the correct part of the page.
