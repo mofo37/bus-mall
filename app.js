@@ -11,17 +11,18 @@ function Display (imageName, path) {
   this.name = imageName;
 }
 
+
 Display.prototype.totalClicksPerImage = function() {
   for (var i = 0; i < 25; i++);
 
 };
 
-var randomImages = function() {
+var randomNumber = function() {
   return Math.floor(Math.random() * (images.length));
 };
 
 var currentImages = function() {
-  return [images[randomImages()], images[randomImages()], images[randomImages()]];
+  return [images[randomNumber()], images[randomNumber()], images[randomNumber()]];
 };
 
 var pageSwitch = function() {
