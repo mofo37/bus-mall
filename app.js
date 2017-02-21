@@ -12,15 +12,13 @@ function Display (imageName, path) {
   this.name = imageName;
 }
 
-
-
-
-var currentImages = function() {
-  // for (var first = 0; first < image.length; first++);
-  return [images[], images[], images[]];
+var randomImages = function() {
+  return Math.floor(Math.random() * (images.length));
 };
 
-
+var currentImages = function() {
+  return [images[randomImages()], images[randomImages()], images[randomImages()]];
+};
 
 
 document.getElementById('first').setAttribute('src', currentImages()[0]);
@@ -28,6 +26,7 @@ document.getElementById('first').setAttribute('src', currentImages()[0]);
 document.getElementById('second').setAttribute('src', currentImages()[1]);
 
 document.getElementById('third').setAttribute('src', currentImages()[2]);
+
 
 var bag = new Display('bag', 'bag.jpg');
 var banana = new Display('banana', 'banana.jpg');
