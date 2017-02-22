@@ -47,7 +47,7 @@ var pageSwitch = function() {
     imageTrio[i].displayed++;
     console.log(imageTrio[i]);
   };
-  
+
   document.getElementById('first').setAttribute('src', imageTrio[0].filepath);
   document.getElementById('second').setAttribute('src', imageTrio[1].filepath);
   document.getElementById('third').setAttribute('src', imageTrio[2].filepath);
