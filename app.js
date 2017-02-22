@@ -9,7 +9,7 @@ var chartConfig = {
     datasets: [{
       label: 'Number of Clicks Per Image',
       data: [5, 2, 5, 7, 3, 6, 1, 4, 5, 6, 7, 1, 2, 4, 3, 3, 7, 6, 4, 1],
-      backgroundColor: ['red'],
+      backgroundColor: ['red','blue','black','grey','red','blue','black','grey','red','blue','black','grey','red','blue','black','grey','red','blue','black','grey'],
       borderColor: ['black'],
       borderWidth: 1,
     }]
@@ -75,6 +75,10 @@ var pageSwitch = function() {
     imageTrio[i].displayed++;
     console.log(imageTrio[i]);
   };
+
+  var storageImages = images;
+  JSON.stringify(storageImages);
+  localStorage.setItem('storeImages', JSON.stringify(storageImages));
 
   document.getElementById('first').setAttribute('src', imageTrio[0].filepath);
   document.getElementById('second').setAttribute('src', imageTrio[1].filepath);
