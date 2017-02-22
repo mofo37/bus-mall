@@ -36,23 +36,26 @@ var randomNumber = function() {
 };
 
 var currentImages = function() {
-  return [[images[randomNumber()].filepath], [images[randomNumber()].filepath], [images[randomNumber()].filepath]];
+  return [images[randomNumber()], images[randomNumber()], images[randomNumber()]];
 };
 
-console.log(currentImages());
+
 
 var pageSwitch = function() {
-  document.getElementById('first').setAttribute('src', currentImages()[0]);
-  document.getElementById('second').setAttribute('src', currentImages()[1]);
-  document.getElementById('third').setAttribute('src', currentImages()[2]);
+  var imageTrio = currentImages();
+  for (var i = 0; i < imageTrio.length; i++) {
+    imageTrio[i].displayed++;
+    console.log(imageTrio[i]);
+  };
+  
+  document.getElementById('first').setAttribute('src', imageTrio[0].filepath);
+  document.getElementById('second').setAttribute('src', imageTrio[1].filepath);
+  document.getElementById('third').setAttribute('src', imageTrio[2].filepath);
 };
 
 document.getElementById('first').addEventListener('click', pageSwitch);
 document.getElementById('second').addEventListener('click', pageSwitch);
 document.getElementById('third').addEventListener('click', pageSwitch);
 
-// for (i = 0; i < images.length; i++) {
-//   images[randomNumber(i)[1].filepath];
-// };
 
 pageSwitch();
