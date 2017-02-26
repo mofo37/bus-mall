@@ -2,7 +2,7 @@
 
 var stringImages = localStorage.getItem('storageImages');
   // console.log('stringImages', stringImages);
-  var storageImages1 = JSON.parse(stringImages);
+var storageImages1 = JSON.parse(stringImages);
   // console.log('storageImages1', storageImages1);
 
 
@@ -44,13 +44,30 @@ var currentImages = function() {
   return [images[randomNumber()], images[randomNumber()], images[randomNumber()]];
 };
 
+// var randomInTrio = function() {
+//   console.log('randomInTrio');
+//   while (currentImages[0] === currentImages[1] || currentImages[0] === currentImages[2] || currentImages[2] === currentImages[1]) {
+//     return currentImages();
+//   }
+// };
+// console.log('current images', currentImages);
 
+var clickCounter = function(clickedImage) {
+  console.log(clickedImage);
+  var filepath = clickedImage.getAttribute('src');
+  console.log(filepath);
+  for (var i = 0; i < images.length; i++) {
+    if (filepath === images[i].filepath) {
+      images[i].clicked++;
+    }
+  }
+};
 
 var pageSwitch = function() {
   var imageTrio = currentImages();
   for (var i = 0; i < imageTrio.length; i++) {
     imageTrio[i].displayed++;
-    console.log(imageTrio[i]);
+    // console.log(imageTrio[i]);
   };
 
   var storageImages = images;
@@ -62,9 +79,14 @@ var pageSwitch = function() {
   document.getElementById('third').setAttribute('src', imageTrio[2].filepath);
 };
 
-document.getElementById('first').addEventListener('click', pageSwitch);
-document.getElementById('second').addEventListener('click', pageSwitch);
-document.getElementById('third').addEventListener('click', pageSwitch);
+var clickReceiver = function() {
+  clickCounter(this);
+  pageSwitch();
+};
+
+document.getElementById('first').addEventListener('click', clickReceiver);
+document.getElementById('second').addEventListener('click', clickReceiver);
+document.getElementById('third').addEventListener('click', clickReceiver);
 
 
 pageSwitch();
