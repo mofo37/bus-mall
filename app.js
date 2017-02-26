@@ -52,22 +52,27 @@ var currentImages = function() {
 // };
 // console.log('current images', currentImages);
 
+var displayedImages = [];
+
 var clickCounter = function(clickedImage) {
-  console.log(clickedImage);
-  var filepath = clickedImage.getAttribute('src');
-  console.log(filepath);
-  for (var i = 0; i < images.length; i++) {
-    if (filepath === images[i].filepath) {
-      images[i].clicked++;
-    }
+  var id = clickedImage.getAttribute('id');
+
+  if (id === 'first') {
+    var image = displayedImages[0];
+  } else if (id === 'second') {
+    var image = displayedImages[1];
+  } else {
+    var image = displayedImages[2];
   }
+
+  image.clicked++;
 };
 
 var pageSwitch = function() {
   var imageTrio = currentImages();
+  displayedImages = imageTrio;
   for (var i = 0; i < imageTrio.length; i++) {
     imageTrio[i].displayed++;
-    // console.log(imageTrio[i]);
   };
 
   var storageImages = images;
