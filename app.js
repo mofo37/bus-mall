@@ -120,10 +120,10 @@ var ctx = document.getElementById('myChart');
 var chartConfig = {
   type: 'bar',
   data: {
-    labels: ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'],
+    labels: images.map(function(display){return display.name}),
     datasets: [{
       label: 'Number of Clicks Per Image',
-      data: [5, 2, 5, 7, 3, 6, 1, 4, 5, 6, 7, 1, 2, 4, 3, 3, 7, 6, 4, 1],
+      data: images.map(function(display){return display.clicked}),
       backgroundColor: ['red','blue','black','grey','red','blue','black','grey','red','blue','black','grey','red','blue','black','grey','red','blue','black','grey'],
       borderColor: ['black'],
       borderWidth: 1,
