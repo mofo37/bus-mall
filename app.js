@@ -51,9 +51,16 @@ var nonDuplicate = function() {
     } else {
       adjustedArray.push(images[i]);
     }
-  }
-  console.log(adjustedArray);
-  return [adjustedArray[randomNumber(adjustedArray)], adjustedArray[randomNumber(adjustedArray)], adjustedArray[randomNumber(adjustedArray)]];
+  };
+
+  var outputArray = [];
+  for (var j = 0; j < 3; j++) { 
+    var imageIndex = randomNumber(adjustedArray);
+    outputArray.push(adjustedArray[imageIndex]);
+    adjustedArray.splice(imageIndex, 1);
+  };
+
+  return outputArray;
 };
 
 
