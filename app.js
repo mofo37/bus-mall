@@ -36,23 +36,26 @@ var wineGlass = new Display('wineGlass', 'wine-glass.jpg');
 
 var images = [bag, banana, bathroom, boots, breakfast, bubblegum, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, unicorn, usb, waterCan, wineGlass];
 
-var randomNumber = function() {
-  return Math.floor(Math.random() * (images.length));
+var randomNumber = function(arr) {
+  return Math.floor(Math.random() * (arr.length));
 };
-
-var currentImages = function() {
-  return [images[randomNumber()], images[randomNumber()], images[randomNumber()]];
-};
-
-// var randomInTrio = function() {
-//   console.log('randomInTrio');
-//   while (currentImages[0] === currentImages[1] || currentImages[0] === currentImages[2] || currentImages[2] === currentImages[1]) {
-//     return currentImages();
-//   }
-// };
-// console.log('current images', currentImages);
 
 var displayedImages = [];
+
+var nonDuplicate = function() {
+  var adjustedArray = [];
+  console.log(displayedImages);
+  for (var i = 0; i < images.length; i++) {
+
+    if (displayedImages.includes(images[i])) {
+    } else {
+      adjustedArray.push(images[i]);
+    }
+  }
+  console.log(adjustedArray);
+  return [adjustedArray[randomNumber(adjustedArray)], adjustedArray[randomNumber(adjustedArray)], adjustedArray[randomNumber(adjustedArray)]];
+};
+
 
 var clickCounter = function(clickedImage) {
   var id = clickedImage.getAttribute('id');
@@ -69,8 +72,9 @@ var clickCounter = function(clickedImage) {
 };
 
 var pageSwitch = function() {
-  var imageTrio = currentImages();
+  var imageTrio = nonDuplicate();
   displayedImages = imageTrio;
+
   for (var i = 0; i < imageTrio.length; i++) {
     imageTrio[i].displayed++;
   };
