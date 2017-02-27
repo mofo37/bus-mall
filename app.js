@@ -1,9 +1,7 @@
 'use strict';
 
 var stringImages = localStorage.getItem('storageImages');
-  // console.log('stringImages', stringImages);
 var storageImages1 = JSON.parse(stringImages);
-  // console.log('storageImages1', storageImages1);
 
 
 function Display (imageName, path) {
@@ -41,10 +39,10 @@ var randomNumber = function(arr) {
 };
 
 var displayedImages = [];
+var displayCount = 0;
 
 var nonDuplicate = function() {
   var adjustedArray = [];
-  console.log(displayedImages);
   for (var i = 0; i < images.length; i++) {
 
     if (displayedImages.includes(images[i])) {
@@ -96,8 +94,17 @@ var pageSwitch = function() {
 };
 
 var clickReceiver = function() {
+  displayCount++;
   clickCounter(this);
-  pageSwitch();
+  if (displayCount < 26) {
+    pageSwitch();
+  } else {
+    document.getElementById('images').removeChild(document.getElementById('first'));
+    document.getElementById('images').removeChild(document.getElementById('second'));
+    document.getElementById('images').removeChild(document.getElementById('third'));
+    showChart();
+  }
+  console.log(displayCount);
 };
 
 document.getElementById('first').addEventListener('click', clickReceiver);
@@ -107,6 +114,7 @@ document.getElementById('third').addEventListener('click', clickReceiver);
 
 pageSwitch();
 
+var showChart = function() {
 var ctx = document.getElementById('myChart');
 
 var chartConfig = {
@@ -133,3 +141,4 @@ var chartConfig = {
 };
 
 var renderedChart = new Chart(ctx, chartConfig);
+};
